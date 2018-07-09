@@ -12,13 +12,12 @@ import org.openqa.selenium.By;
 
 public class SendMailTest extends Settings {
 
-    private By text = By.cssSelector(".message-sent__wrap .message-sent__title");
+    private By mailSended = By.cssSelector(".message-sent__title"); //need to update to get message
 
     @Test
     public void sendMailTest(){
         mainPage.authorization(ConfigTestData.getData("login"),ConfigTestData.getData("password"));
         inbox.createNewMessage(ConfigTestData.getData("sendMailTo"), "test", "test");
-        Assert.assertEquals("Ваше письмо отправлено. Перейти во Входящие", driver.findElement(text).getText());
-        System.out.println("12" +driver.findElement(text).getText());
+        Assert.assertEquals("Ваше письмо отправлено. Перейти во Входящие", driver.findElement(mailSended).getText());
     }
 }
