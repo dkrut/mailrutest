@@ -3,6 +3,7 @@ package org.bitbucket.dkrut.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * Created by @author Denis Krutikov on 09.07.2018.
@@ -26,8 +27,9 @@ public class InboxMessages {
         driver.findElement(this.to).sendKeys(to);
         driver.findElement(this.subject).sendKeys(subject);
         driver.switchTo().frame(driver.findElement(frame));
-        driver.findElement(this.body).click();
-        driver.findElement(this.body).sendKeys(body);
-        driver.findElement(this.body).sendKeys(Keys.CONTROL, Keys.ENTER);
+        WebElement messageBody = driver.findElement(this.body);
+        messageBody.click();
+        messageBody.sendKeys(body);
+        messageBody.sendKeys(Keys.CONTROL, Keys.ENTER);
     }
 }
